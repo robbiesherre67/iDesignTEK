@@ -13,7 +13,7 @@ git diff HEAD~2 HEAD =>  Shows the changes between two commits
 git shortlog => finding contributors
 git log --author=“Your name” --oneline => All commits made by yourself. Using one-liner option.
 
-BRANCHING =>
+Repository =>
 
 git remote add origin https://github.com/robbiesherre67/GitCmdNotes.git
 git push -u origin main
