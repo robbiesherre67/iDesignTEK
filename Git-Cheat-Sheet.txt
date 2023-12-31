@@ -1,0 +1,16 @@
+Git Cheat Sheet - GitHub Repository => https://github.com/robbiesherre67/GitCmdNotes
+username => robbiesherre67
+Password => LilVarms**67
+
+
+mkdir => creates a directory/folder
+git mv <filename> <foldername> => moves a file
+git blame <name of file> => blame output
+git tag v1.0 => tags a filename
+git tag -n => shows the version and the name of the file
+git log -3 => shows the last 3 entries
+git diff HEAD~2 HEAD =>  Shows the changes between two commits
+git shortlog => finding contributors
+git log --author=“Your name” --oneline => All commits made by yourself. Using one-liner option.
+
+BRANCHING =>
