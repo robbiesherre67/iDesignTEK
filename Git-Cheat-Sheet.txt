@@ -14,3 +14,6 @@ git shortlog => finding contributors
 git log --author=“Your name” --oneline => All commits made by yourself. Using one-liner option.
 
 BRANCHING =>
+
+git remote add origin https://github.com/robbiesherre67/GitCmdNotes.git
+git push -u origin main
