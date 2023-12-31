@@ -20,3 +20,4 @@ git push -u origin main
 
 Stashing =>
 git stash push -m "new content update"
+git stash list => lists the files you have stashed
