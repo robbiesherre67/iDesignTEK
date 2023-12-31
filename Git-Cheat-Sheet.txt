@@ -18,6 +18,9 @@ Repository =>
 git remote add origin https://github.com/robbiesherre67/GitCmdNotes.git
 git push -u origin main
 
+#########
+git commit -am "new file content" => ADDs the file with a message
+
 Stashing =>
 git stash push -m "new content update"
 git stash list => lists the files you have stashed
