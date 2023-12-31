@@ -14,3 +14,4 @@ git shortlog => finding contributors
 git log --author=“Your name” --oneline => All commits made by yourself. Using one-liner option.
 
 BRANCHING =>
+new file
