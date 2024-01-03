@@ -24,3 +24,6 @@ git commit -am "new file content" => ADDs the file with a message
 Stashing =>
 git stash push -m "new content update"
 git stash list => lists the files you have stashed
+
+#########
+Rebasing // Cherry Picking
