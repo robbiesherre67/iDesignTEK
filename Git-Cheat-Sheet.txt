@@ -2,6 +2,7 @@ Git Cheat Sheet - GitHub Repository => https://github.com/robbiesherre67/GitCmdN
 username => robbiesherre67
 Password => LilVarms**67
 
+https://git-scm.com/docs
 
 mkdir => creates a directory/folder
 git mv <filename> <foldername> => moves a file
@@ -42,3 +43,6 @@ git commit
 Picking a file from another branch
 git restore --source=feature/filename -- toc.txt
 git status -s (stands for short status)
+
+#########
+Collaboration
