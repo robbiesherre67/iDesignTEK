@@ -33,4 +33,11 @@ Use git mergetool to run one of several merge utilities to resolve merge conflic
 If one or more <file> parameters are given, the merge tool program will be run to resolve differences in each file (skipping those without conflicts). Specifying a directory will include all unresolved files in that path. If no <file> names are specified, git mergetool will run the merge tool program on every file with merge conflicts.
 
 #########
-Cherry Picking
+//Cherry Picking//
+git cherry-pick 6767000 (unique ID SHA)
+git merge-tool => opens the mergetool
+master | cherry => this should "show" as you are cherry picking a file
+git status -s => will show the file
+git commit
+
+#########
