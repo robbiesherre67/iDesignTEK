@@ -13,6 +13,7 @@ git log -3 => shows the last 3 entries
 git diff HEAD~2 HEAD =>  Shows the changes between two commits
 git shortlog => finding contributors
 git log --author=“Your name” --oneline => All commits made by yourself. Using one-liner option.
+git log --oneline // shows all of your commits
 
 #### Repository =>
 git remote add origin https://github.com/robbiesherre67/GitCmdNotes.git
@@ -47,3 +48,4 @@ git status -s (stands for short status)
 #########
 Collaboration
 git pull == fetch + merge
+git push // git push origin // git push origin master = can use all 3
