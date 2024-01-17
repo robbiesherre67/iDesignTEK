@@ -46,3 +46,4 @@ git status -s (stands for short status)
 
 #########
 Collaboration
+git pull == fetch + merge
