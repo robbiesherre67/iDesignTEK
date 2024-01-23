@@ -49,3 +49,6 @@ git status -s (stands for short status)
 Collaboration
 git pull == fetch + merge
 git push // git push origin // git push origin master = can use all 3
+
+git push -u // -u means "set upstream
+git push -u origin feature/FEDEPIC-XXXX
