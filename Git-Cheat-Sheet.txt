@@ -69,4 +69,9 @@ DO NOT REWRITE PUBLIC HISTORY!!!
 git log --oneline --all --graph // Shows every thing you have committed
 Undoing a Commit =
 git revert HEAD
-git reset --hard HEAD~1
+git reset --hard HEAD~1 //
+--soft = removes the commit only
+--mixed = Unstages files = one step back
+--hard = Discards local changes
+git reset --HEAD~3 = reverts last 3 commits
+git reflog = shows all of the unique id's and ALL of the commits and messages
