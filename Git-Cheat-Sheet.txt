@@ -75,3 +75,4 @@ git reset --hard HEAD~1 //
 --hard = Discards local changes
 git reset --HEAD~3 = reverts last 3 commits
 git reflog = shows all of the unique id's and ALL of the commits and messages
+git reflog show feature = shows all of the commits from the feature branch
