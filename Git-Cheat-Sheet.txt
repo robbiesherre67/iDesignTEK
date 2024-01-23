@@ -64,4 +64,5 @@ Conflicts --
 in GitHub review conflicts finish your review and merge
 
 ######### ****************
-UNDO OR REVERT COMMITS
+UNDO OR REVERT COMMITS // Rewriting History
+DO NOT REWRITE PUBLIC HISTORY!!!
