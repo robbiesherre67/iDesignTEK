@@ -62,3 +62,6 @@ Review Changes //  click APPROVE in GitHub
 
 Conflicts --
 in GitHub review conflicts finish your review and merge
+
+######### ****************
+UNDO OR REVERT COMMITS
