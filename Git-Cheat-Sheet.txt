@@ -66,3 +66,7 @@ in GitHub review conflicts finish your review and merge
 ######### ****************
 UNDO OR REVERT COMMITS // Rewriting History
 DO NOT REWRITE PUBLIC HISTORY!!!
+git log --oneline --all --graph // Shows every thing you have committed
+Undoing a Commit =
+git revert HEAD
+git reset --hard HEAD~1
