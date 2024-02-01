@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      padding: 20px;
+    }
+
+    .day {
+      width: 100px;
+      height: 100px;
+      border: 1px solid #ccc;
+      margin: 5px;
+      padding: 10px;
+      box-sizing: border-box;
+      cursor: pointer;
+    }
+
+    #noteDialog {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      padding: 20px;
+      background-color: #fff;
+      border: 1px solid #ccc;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+  </style>
+  <title>Week Calendar</title>
+</head>
+<body>
+
+  <div id="noteDialog">
+    <h2>Note for <span id="selectedDay"></span></h2>
+    <textarea id="noteInput" rows="4" cols="30"></textarea>
+    <br>
+    <button onclick="saveNote()">Save Note</button>
+    <button onclick="closeDialog()">Close</button>
+  </div>
+
+  <script>
+    // Function to open the note dialog
+    function openDialog(day) {
+      document.getElementById('selectedDay').innerText = day;
+      document.getElementById('noteDialog').style.display = 'block';
+    }
+
+    // Function to close the note dialog
+    function closeDialog() {
+      document.getElementById('noteDialog').style.display = 'none';
+    }
+
+    // Function to save the note
+    function saveNote() {
+      const selectedDay = document.getElementById('selectedDay').innerText;
+      const note = document.getElementById('noteInput').value;
+      alert(`Note saved for ${selectedDay}: ${note}`);
+      closeDialog();
+    }
+  </script>
+
+  <!-- Creating the week calendar -->
+  <div class="day" onclick="openDialog('Sunday')">Sunday</div>
+  <div class="day" onclick="openDialog('Monday')">Monday</div>
+  <div class="day" onclick="openDialog('Tuesday')">Tuesday</div>
+  <div class="day" onclick="openDialog('Wednesday')">Wednesday</div>
+  <div class="day" onclick="openDialog('Thursday')">Thursday</div>
+  <div class="day" onclick="openDialog('Friday')">Friday</div>
+  <div class="day" onclick="openDialog('Saturday')">Saturday</div>
+
+</body>
+</html>
