@@ -478,7 +478,7 @@ Mostly, we will use export our main function of our module as default export. Th
 **********************************************
 **********************************************
 CODE SNIPPETS 
-type the following for components = rafce this genertates the following code ->
+type the following for components = rafce this generates the following code ->
  React from 'react'
 
 const javascript-code-examples = () => {
