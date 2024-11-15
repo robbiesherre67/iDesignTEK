@@ -27,8 +27,13 @@ cd INTO YOUR REACT FOLDER
 ROUTING install = npm i react-router-dom
 *****************************
 
-CMD SHIFT L  = selects all of the text you want to change at one Time.
+CMD SHIFT D  = selects all of the text you want to change at one Time.
 rafce = creating a React ARROW Function for components
+
+*****************************
+  TAILWIND CSS INSTALL ->
+
+https://tailwindcss.com/docs/guides/create-react-app
 
 *****************************
 
