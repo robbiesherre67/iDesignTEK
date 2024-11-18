@@ -495,3 +495,25 @@ const javascript-code-examples = () => {
 }
 
 export default javascript-code-examples
+
+****************************************
+FOR LOOP example ->
+A for loop is a statement that executes a block of code a set number of times. For loops are useful when you need to repeat a task a specific number of times.
+
+for (let step = 0; step < 5; step++) {
+  console.log("Walking east one step");
+  }
+
+Instead of writing:
+text += cars[0] + "<br>";
+text += cars[1] + "<br>";
+text += cars[2] + "<br>";
+text += cars[3] + "<br>";
+text += cars[4] + "<br>";
+text += cars[5] + "<br>";
+
+You can write:
+for (let i = 0; i < cars.length; i++) {
+  text += cars[i] + "<br>";
+}
+**************************************
