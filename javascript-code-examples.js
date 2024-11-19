@@ -517,3 +517,90 @@ for (let i = 0; i < cars.length; i++) {
   text += cars[i] + "<br>";
 }
 **************************************
+ARROW FUNCTION
+An arrow function in JavaScript is a more concise way to write function expressions. 
+Introduced in ES6, arrow functions are especially useful for shorter functions and 
+are often used with array methods like map, filter, and reduce.
+
+Syntax:
+
+(param1, param2, ...) => expression
+Parentheses: Required if there are zero or multiple parameters, but optional if there's exactly one parameter.
+Arrow (=>): Separates the parameter list from the function body.
+Expression: If the body has a single expression, it implicitly returns the result. For multiple statements, you must use curly braces {} and an explicit return.
+
+Examples:
+1. Basic Arrow Function:
+Equivalent to function expression:
+
+// Traditional function
+const add = function (a, b) {
+  return a + b;
+};
+
+// Arrow function
+const addArrow = (a, b) => a + b;
+
+console.log(add(2, 3));        // Output: 5
+console.log(addArrow(2, 3));   // Output: 5
+
+2. Single Parameter (Parentheses Optional):
+If the function takes a single parameter, you can omit the parentheses:
+
+const square = x => x * x;
+
+console.log(square(4)); // Output: 16
+
+3. No Parameters (Parentheses Required):
+If there are no parameters, use empty parentheses:
+
+const greet = () => 'Hello, World!';
+
+console.log(greet()); // Output: Hello, World!
+
+4. Multiline Function Body:
+For functions with multiple statements, use curly braces {} and return:
+
+const multiply = (a, b) => {
+  const result = a * b;
+  return result;
+};
+
+console.log(multiply(3, 4)); // Output: 12
+
+Key Characteristics:
+1. Implicit Return:
+If the function body contains a single expression, the result is returned implicitly without using the return keyword.
+
+const double = x => x * 2;
+console.log(double(5)); // Output: 10
+
+2. Lexical this Binding:
+Arrow functions do not have their own this. Instead, they inherit this from the surrounding scope. This makes them useful in situations where this can be ambiguous.
+
+function Person(name) {
+  this.name = name;
+}
+
+Person.prototype.sayName = function () {
+  setTimeout(() => {
+    console.log(`My name is ${this.name}`); // Arrow function inherits `this` from `sayName`
+  }, 1000);
+};
+
+const john = new Person('John');
+john.sayName(); // Output: My name is John
+Note: In contrast, a traditional function would require bind(this) or saving this to a variable.
+
+3. Cannot Be Used as Constructors:
+Arrow functions cannot be used with new to create objects because they don’t have a this binding or a prototype.
+
+const Foo = () => {};
+const obj = new Foo(); // TypeError: Foo is not a constructor
+When to Use Arrow Functions:
+When you need concise and clean syntax.
+When this binding needs to refer to the surrounding lexical scope.
+For callbacks or methods like map, filter, reduce, etc.
+When Not to Use Arrow Functions:
+When defining methods in an object literal or class (use traditional function to preserve this binding).
+When creating constructor functions.
