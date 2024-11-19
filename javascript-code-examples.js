@@ -604,3 +604,111 @@ For callbacks or methods like map, filter, reduce, etc.
 When Not to Use Arrow Functions:
 When defining methods in an object literal or class (use traditional function to preserve this binding).
 When creating constructor functions.
+
+****************************************
+OBJECT LITERAL
+In JavaScript, an object literal is a simple way to create an object using curly braces {}. 
+It allows you to define properties (key-value pairs) and methods directly.
+
+Syntax:
+
+const objectName = {
+  key1: value1,
+  key2: value2,
+  key3: function() {
+    // Method logic
+  }
+};
+
+Keys are the property names (can be strings, or symbols).
+Values can be of any data type: strings, numbers, arrays, functions, or even other objects.
+
+Example:
+
+const person = {
+  firstName: 'John',
+  lastName: 'Doe',
+  age: 30,
+  hobbies: ['reading', 'gaming', 'coding'],
+  greet: function () {
+    return `Hello, my name is ${this.firstName} ${this.lastName}.`;
+  },
+  isAdult: function () {
+    return this.age >= 18;
+  }
+};
+
+console.log(person.firstName); // Output: John
+console.log(person.greet());   // Output: Hello, my name is John Doe.
+console.log(person.isAdult()); // Output: true
+
+Features:
+1. Shorthand Property Names:
+If the property name and the variable name are the same, you can use shorthand:
+
+const firstName = 'Alice';
+const lastName = 'Smith';
+
+const user = { firstName, lastName };
+console.log(user); // Output: { firstName: 'Alice', lastName: 'Smith' }
+
+2. Computed Property Names:
+You can use an expression inside square brackets [] to compute the property name dynamically:
+
+const key = 'dynamicKey';
+const obj = {
+  [key]: 'This is a dynamic value',
+};
+
+console.log(obj.dynamicKey); // Output: This is a dynamic value
+
+3. Method Definition Shorthand:
+You can define methods without the function keyword:
+
+const calculator = {
+  add(a, b) {
+    return a + b;
+  },
+  subtract(a, b) {
+    return a - b;
+  }
+};
+
+console.log(calculator.add(2, 3));      // Output: 5
+console.log(calculator.subtract(5, 3)); // Output: 2
+
+4. Nested Objects:
+Objects can have other objects as values:
+
+const car = {
+  brand: 'Tesla',
+  model: 'Model 3',
+  specifications: {
+    range: '358 miles',
+    topSpeed: '140 mph',
+  }
+};
+
+console.log(car.specifications.range); // Output: 358 miles
+
+Advantages of Object Literals:
+Simple and concise: No need for a constructor or class to create objects.
+Flexible: You can easily add, modify, or delete properties.
+Modifying Object Properties:
+
+const book = {
+  title: 'JavaScript Basics',
+  author: 'Jane Doe',
+};
+
+// Add a new property
+book.year = 2021;
+
+// Modify an existing property
+book.author = 'John Doe';
+
+// Delete a property
+delete book.year;
+
+console.log(book);
+// Output: { title: 'JavaScript Basics', author: 'John Doe' }  
