@@ -712,3 +712,171 @@ delete book.year;
 
 console.log(book);
 // Output: { title: 'JavaScript Basics', author: 'John Doe' }  
+
+************************
+
+------------ Functions ------------ START
+
+In JavaScript, a function is a reusable block of code designed to perform a particular task. 
+Functions allow you to structure your code, make it modular, and avoid repetition.
+
+Defining a Function
+There are several ways to define functions in JavaScript:
+
+1. Function Declaration:
+A traditional way to define a function. It can be called before its definition due to hoisting.
+
+
+function greet(name) {
+  return `Hello, ${name}!`;
+}
+
+console.log(greet('Alice')); // Output: Hello, Alice!
+
+*************
+
+2. Function Expression:
+A function assigned to a variable. It is not hoisted, so it must be defined before being used.
+
+
+const greet = function (name) {
+  return `Hello, ${name}!`;
+};
+
+console.log(greet('Bob')); // Output: Hello, Bob!
+
+*************
+  
+3. Arrow Function:
+A concise way to write functions, introduced in ES6. It does not have its own this or arguments.
+
+
+const greet = (name) => `Hello, ${name}!`;
+
+console.log(greet('Charlie')); // Output: Hello, Charlie!
+
+*************
+
+4. Anonymous Function:
+A function without a name. Often used as a callback.
+
+
+setTimeout(function () {
+  console.log('This is an anonymous function!');
+}, 1000);
+
+*************
+
+5. IIFE (Immediately Invoked Function Expression):
+A function that runs immediately after it is defined.
+
+
+(function () {
+  console.log('This function runs immediately!');
+})();
+Parameters and Arguments
+Functions can take inputs (parameters) and return outputs. If a parameter is not provided, it is undefined by default.
+
+
+function add(a, b = 0) {
+  return a + b;
+}
+
+console.log(add(5, 10)); // Output: 15
+console.log(add(5));     // Output: 5 (b defaults to 0)
+Return Statement
+The return statement specifies the value a function should return. If omitted, the function returns undefined.
+
+
+function square(num) {
+  return num * num;
+}
+
+console.log(square(4)); // Output: 16
+Scope
+Functions have their own local scope:
+
+Variables defined inside a function are not accessible outside it.
+Functions can access variables from the outer (global) scope.
+
+const globalVar = 'Global';
+
+function testScope() {
+  const localVar = 'Local';
+  console.log(globalVar); // Output: Global
+  console.log(localVar);  // Output: Local
+}
+
+testScope();
+console.log(localVar); // Error: localVar is not defined
+Default Parameters
+You can set default values for function parameters.
+
+
+function greet(name = 'Guest') {
+  return `Hello, ${name}!`;
+}
+
+console.log(greet()); // Output: Hello, Guest!
+console.log(greet('Alice')); // Output: Hello, Alice!
+Rest Parameters
+Use ... to accept a variable number of arguments as an array.
+
+
+function sum(...numbers) {
+  return numbers.reduce((total, num) => total + num, 0);
+}
+
+console.log(sum(1, 2, 3, 4)); // Output: 10
+Anonymous vs. Named Functions
+Anonymous: A function without a name. Useful for callbacks.
+Named: A function with a name, helpful for debugging.
+
+const anonymous = function () {
+  console.log('I am anonymous!');
+};
+
+function named() {
+  console.log('I am named!');
+}
+
+*************
+
+Callback Functions
+A function passed as an argument to another function to be executed later.
+
+
+function processUserInput(callback) {
+  const name = 'Alice';
+  callback(name);
+}
+
+processUserInput(function (name) {
+  console.log(`Hello, ${name}!`);
+});
+// Output: Hello, Alice!
+
+*************
+
+Arrow Functions and this
+Arrow functions do not bind their own this. Instead, they inherit this from the surrounding scope.
+
+
+const person = {
+  name: 'Bob',
+  greet: function () {
+    setTimeout(() => {
+      console.log(`Hi, I’m ${this.name}`);
+    }, 1000);
+  },
+};
+
+person.greet(); // Output: Hi, I’m Bob
+Summary
+Functions in JavaScript are essential for:
+
+Modularity: Breaking down code into smaller, reusable parts.
+Encapsulation: Isolating logic in functions to improve clarity.
+Flexibility: Handling inputs (parameters) and returning results.
+
+------------ Functions ------------ END  
