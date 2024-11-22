@@ -1,6 +1,4 @@
-*****************************
-
-*****************************
+****************************
 REACT to start the DEV Server Locally -> npm run dev
 
 END of local REACT project run -> npm run build and this creates 
@@ -260,8 +258,7 @@ const Card = () => {
  
 export default Card;
 *****************************
-*****************************
-
+--------------------------------JAVASCRIPT FUNCTIONS -----------------START  
 const now = 2024;
 const birthYear = 1966;
 
@@ -358,8 +355,6 @@ Var is the functional scope variable - which means we can use variable that decl
 
 But let and const are the block scope variables - which means we can only use them in that particular code block, in which they are defined.
 
-
-
 Arrow Function
 Arrow function is the another way to define function. By using arrow function syntax we can define JavaScript functions more easily.
 
@@ -387,7 +382,6 @@ const user = {
 console.log(user.email); // Output: harley07@gmail.com
 console.log(user["email"]); // Output: harley07@gmail.com
 
-
 Object Destructuring
 By using object destructuring, we can get properties as variables in just one line.\
 
@@ -404,7 +398,7 @@ const user = {
 const { name: userName, email, country } = user;
  
 console.log(userName, email, country);
-
+----------------------------------------------
 
 Array .map method
 In react, .map method is used to display elements in our web-page and It will always returns a new array. So here is the example for that. We have list of products and we want to display them on our web-page.
@@ -449,8 +443,6 @@ In simple words, …arr1 means we get 1, 2, 3, 4
 
 We can also use this spread operator in objects for getting the objects values.
 
-
-
 Ternary Operator
 Ternary operator also known as conditional operator which is the shortcut way to write if else condition.
 
@@ -493,8 +485,6 @@ Now we have another method to export function or variable from our module which 
 Mostly, we will use export our main function of our module as default export. The difference is only in import statement.
 
 **********************************************
-**********************************************
-**********************************************
 CODE SNIPPETS 
 type the following for components = rafce this generates the following code ->
  React from 'react'
@@ -530,6 +520,7 @@ for (let i = 0; i < cars.length; i++) {
   text += cars[i] + "<br>";
 }
 **************************************
+
 ARROW FUNCTION
 An arrow function in JavaScript is a more concise way to write function expressions. 
 Introduced in ES6, arrow functions are especially useful for shorter functions and 
