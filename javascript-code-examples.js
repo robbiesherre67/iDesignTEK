@@ -270,6 +270,28 @@ function calcAge(birthYear) {
 // You have to call this function in order for the console.log to render the age
 calcAge(birthYear);
 
+-------------------SCOPE CHAIN GLOBAL SCOPE FIRST SCOPE AND SECOND SCOPE -------------
+
+SCOPE CHAIN = VARIABLES LOOKUP IN SCOPE CHAIN
+EXAMPLE ->
+
+const myName = 'Robbie Sherre';
+
+function first() {
+  const age = 58;
+  
+  if (age >= 58) {
+    const decade = 5;
+    var millenial = true;
+  }
+  
+  function second() {
+    const job = 'Programmer';
+    console.log(`${myName} is a ${age}-year old ${job}`)
+  }
+  second();
+}
+first();
 -------------------------------
   
 //ARROW Function
