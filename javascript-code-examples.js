@@ -294,6 +294,25 @@ function first() {
 first();
 -------------------------------
 
+-------------------------------FIRST, SECOND, AND THIRD SCOPE FUNCTION--------------
+const a = 'Robbie, ';
+first();
+
+function first() {
+  const c = 'Hello ';
+  second();
+  
+function second() {
+  const b = 'There!';
+  third();
+    
+function third() {
+  const d = "Hey ";
+  console.log(d + a + c + b);
+  }
+}
+}
+
 ---------------LEXICAL SCOPING-----------------START
 Lexical scoping (also called static scoping) in JavaScript determines how variable names are resolved in nested functions. 
 It means that the scope of a variable is defined by its position in the source code, and nested functions inherit the scope 
