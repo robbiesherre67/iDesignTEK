@@ -293,6 +293,95 @@ function first() {
 }
 first();
 -------------------------------
+
+---------------LEXICAL SCOPING-----------------START
+Lexical scoping (also called static scoping) in JavaScript determines how variable names are resolved in nested functions. 
+It means that the scope of a variable is defined by its position in the source code, and nested functions inherit the scope 
+of their parent functions. The JavaScript engine uses this structure to resolve variable names when a function is called.
+
+How Lexical Scoping Works
+Scope is defined during the code's writing (lexically), not during execution.
+Inner functions have access to variables in their outer function's scope, but the outer function does not have access to variables inside the inner function.
+Example of Lexical Scoping
+
+function outerFunction() {
+  let outerVariable = "I'm from outer scope";
+
+  function innerFunction() {
+    console.log(outerVariable); // Can access outerVariable from outerFunction
+  }
+
+  innerFunction();
+}
+
+outerFunction();
+Output:
+I'm from outer scope
+  
+Explanation:
+innerFunction is declared inside outerFunction, so it can access outerVariable due to lexical scoping.
+
+Key Characteristics
+Parent Scope Access:
+Inner functions can access variables declared in their parent function (and above in the chain of scopes).
+No Reverse Access:
+Outer functions cannot access variables declared inside inner functions.
+Global Access:
+Functions can also access variables from the global scope.
+
+
+Another Example with Nested Scopes
+
+let globalVar = "I'm a global variable";
+
+function outer() {
+  let outerVar = "I'm an outer variable";
+
+  function inner() {
+    let innerVar = "I'm an inner variable";
+    console.log(globalVar); // Accessible
+    console.log(outerVar);  // Accessible
+    console.log(innerVar);  // Accessible
+  }
+
+  inner();
+
+  // console.log(innerVar); // Error: innerVar is not defined
+}
+
+outer();
+Output:
+
+I'm a global variable
+I'm an outer variable
+I'm an inner variable
+
+Closure and Lexical Scoping
+Lexical scoping is fundamental to closures in JavaScript. A closure is created when a function "remembers" 
+the variables of its outer scope even after the outer function has finished executing.
+
+Example:
+
+function outerFunction() {
+  let count = 0;
+
+  return function innerFunction() {
+    count++;
+    console.log(count);
+  };
+}
+
+const counter = outerFunction();
+counter(); // Output: 1
+counter(); // Output: 2
+Here, innerFunction forms a closure over count, allowing it to access and modify it even after outerFunction has executed.
+
+Why Is Lexical Scoping Important?
+It provides a predictable way to resolve variable references.
+It enables powerful constructs like closures.
+It helps in organizing and structuring code in a modular and reusable manner.
+
+---------------LEXICAL SCOPING-----------------END
   
 //ARROW Function
 const greet = (language) => console.log("Hello Javascript World", language);
