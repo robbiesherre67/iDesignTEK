@@ -262,6 +262,19 @@ export default Card;
 *****************************
 *****************************
 
+const now = 2024;
+const birthYear = 1966;
+
+function calcAge(birthYear) {
+  let age = now - birthYear;
+  console.log(age); // Log the calculated age
+}
+ // Call the function with the birthYear
+// You have to call this function in order for the console.log to render the age
+calcAge(birthYear);
+
+-------------------------------
+  
 //ARROW Function
 const greet = (language) => console.log("Hello Javascript World", language);
 greet("ReactJS");
