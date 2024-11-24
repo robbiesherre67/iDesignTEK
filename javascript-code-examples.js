@@ -258,6 +258,89 @@ const Card = () => {
  
 export default Card;
 *****************************
+REACT JS useState() EXAMPLE ->
+
+Here’s a simple example of using useState in a React component to handle input changes:
+
+Example: Controlled Input Field
+
+import React, { useState } from "react";
+
+function InputHandlerExample() {
+  const [inputValue, setInputValue] = useState(""); // Step 1: Initialize state
+
+  // Step 2: Define input handler
+  const handleInputChange = (event) => {
+    setInputValue(event.target.value); // Update the state with input value
+  };
+
+  return (
+    <div>
+      <h1>React useState Input Handler Example</h1>
+      {/* Step 3: Bind input value and onChange */}
+      <input
+        type="text"
+        value={inputValue}
+        onChange={handleInputChange}
+        placeholder="Type something..."
+      />
+      <p>You typed: {inputValue}</p>
+    </div>
+  );
+}
+
+export default InputHandlerExample;
+
+***Key Points:
+useState Hook: It is used to manage the inputValue state.
+
+useState("") initializes the state with an empty string.
+setInputValue updates the state whenever the input changes.
+handleInputChange Function: This function takes the event object, extracts the value of the input field using event.target.value, and updates the state.
+
+Controlled Component: The value attribute of the input is tied to the state (inputValue). This makes it a controlled input, ensuring the React state is the single source of truth.
+
+This approach is scalable and can be extended for forms with multiple inputs.
+------------------------------------
+
+handleClick ClickHandler Event Handlers ->
+
+import React, { useState } from "react";
+
+function ClickHandlerExample() {
+  const [count, setCount] = useState(0); // Step 1: Initialize state
+
+  // Step 2: Define click handler
+  const handleClick = () => {
+    setCount(count + 1); // Update the state to increment the count
+  };
+
+  return (
+    <div>
+      <h1>React handleClick Example</h1>
+      <p>Button clicked {count} times</p>
+      {/* Step 3: Attach click handler to the button */}
+      <button onClick={handleClick}>Click Me</button>
+    </div>
+  );
+}
+
+export default ClickHandlerExample;
+
+***Key Points:
+useState Hook:
+
+useState(0) initializes the state variable count to 0.
+setCount updates the state.
+handleClick Function:
+
+When the button is clicked, the handleClick function is called.
+It increments the count by 1 using setCount.
+Button with onClick:
+
+The onClick event handler is attached to the button.
+This triggers the handleClick function when the button is clicked.  
+  
 --------------------------------JAVASCRIPT FUNCTIONS -----------------START  
 const now = 2024;
 const birthYear = 1966;
