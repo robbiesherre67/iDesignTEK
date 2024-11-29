@@ -4,7 +4,7 @@ REACT to start the DEV Server Locally -> npm run dev
 END of local REACT project run -> npm run build and this creates 
 a "dist" that you can deploy your code with.
 -----------------------------
-npm create vite@latest ADD name of your project
+npm create vite@latest ADD name of your project -- --template react
 change the port of the localhost SERVER:3000
 
 import { defineConfig } from "vite";
