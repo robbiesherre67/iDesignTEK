@@ -1184,3 +1184,75 @@ For security reasons, fetch does not allow cross-origin cookies unless the crede
 By combining fetch with async/await, you can make the code even cleaner and easier to read.
 
 <!--------------END FETCH METHOD ------------>
+
+
+<!--  START FETCH AWAIT ASYNC -->
+Using async/await with the fetch API makes the code easier to read and manage, especially when dealing with multiple asynchronous operations.
+
+Example with GET Request
+
+const fetchData = async () => {
+  try {
+    const response = await fetch('https://jsonplaceholder.typicode.com/posts/1'); // Make the HTTP request
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`); // Check if the response is OK
+    }
+    const data = await response.json(); // Parse the response as JSON
+    console.log(data); // Process the data
+  } catch (error) {
+    console.error('Error fetching data:', error); // Handle errors
+  }
+};
+
+fetchData();
+
+Explanation
+1. async Function: The fetchData function is declared as async, allowing the use of await inside it.
+2. Awaiting the Fetch: The await keyword pauses the execution of the function until the fetch Promise resolves.
+3. Response Handling:
+Check response.ok to ensure the HTTP request was successful.
+Parse the response with response.json() using await again.
+4. Error Handling: Use try...catch to handle errors, such as network issues or non-2xx HTTP responses.
+
+  ---------------------------
+Example with POST Request
+
+const createPost = async () => {
+  try {
+    const response = await fetch('https://jsonplaceholder.typicode.com/posts', {
+      method: 'POST', // HTTP method
+      headers: {
+        'Content-Type': 'application/json' // Specify the content type
+      },
+      body: JSON.stringify({
+        title: 'My Post',
+        body: 'This is the content of the post.',
+        userId: 1
+      }) // Convert the data to JSON string
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+
+    const data = await response.json(); // Parse the response as JSON
+    console.log('Post created:', data); // Process the response
+  } catch (error) {
+    console.error('Error creating post:', error); // Handle errors
+  }
+};
+
+createPost();
+------------------------
+Explanation
+1. async/await with POST: The await keyword is used to handle the fetch call and parsing the response, just like in the GET example.
+2. Request Body:
+The body contains a stringified JSON object (JSON.stringify).
+The Content-Type header is set to application/json to indicate the type of data being sent.
+3. Error Handling:
+Non-2xx HTTP statuses and network errors are caught and logged.
+Benefits of async/await
+Readability: The code reads like synchronous code, making it easier to understand.
+Error Handling: Works seamlessly with try...catch for robust error management.  
+
+<!--  END FETCH AWAIT ASYNC -->
