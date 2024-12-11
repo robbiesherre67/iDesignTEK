@@ -1097,3 +1097,90 @@ Encapsulation: Isolating logic in functions to improve clarity.
 Flexibility: Handling inputs (parameters) and returning results.
 
 ------------ Functions ------------ END  
+
+<!--------------START FETCH METHOD ------------>
+The fetch method in JavaScript is used to make HTTP requests to servers and fetch resources such as text, JSON, or files. It is part of the modern JavaScript Fetch API and provides a more powerful and flexible alternative to the older XMLHttpRequest.
+
+Key Features of fetch
+1. Promise-based: The fetch method returns a Promise that resolves once the response is available.
+
+2. Readable Streams: It provides access to the response body as a stream, making it suitable for large resources.
+
+3. Simpler Syntax: Easier to read and write compared to XMLHttpRequest.
+
+4. Supports Additional Features: Allows customization of requests through options like HTTP methods, headers, body, and credentials.
+----------------------
+Syntax
+
+fetch(url, options)
+----------------------
+** -> url: The URL of the resource you want to fetch.
+** -> options (optional): An object containing settings like method, headers, body, etc.
+
+----------------------
+*** Basic Example
+
+fetch('https://jsonplaceholder.typicode.com/posts/1')
+  .then(response => {
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+    return response.json(); // Parse the response as JSON
+  })
+  .then(data => {
+    console.log(data); // Handle the JSON data
+  })
+  .catch(error => {
+    console.error('Error fetching data:', error);
+  });
+
+*** Explanation of the Example
+1. fetch Call:
+Makes a GET request to https://jsonplaceholder.typicode.com/posts/1.
+
+2. Handling the Response:
+The first .then() checks the response's ok property to ensure the HTTP status is in the 200–299 range.
+If successful, it calls response.json() to parse the body as JSON.
+
+3. Processing Data:
+The second .then() receives the parsed JSON and processes it (logs it to the console).
+
+4. Error Handling:
+The .catch() block handles network errors or rejected Promises.
+
+--------------------
+Example with POST Request
+
+fetch('https://jsonplaceholder.typicode.com/posts', {
+  method: 'POST', // HTTP method
+  headers: {
+    'Content-Type': 'application/json' // Specify content type
+  },
+  body: JSON.stringify({
+    title: 'My Post',
+    body: 'This is the content of the post.',
+    userId: 1
+  }) // Stringify the data to send
+})
+  .then(response => {
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+    return response.json();
+  })
+  .then(data => {
+    console.log('Post created:', data);
+  })
+  .catch(error => {
+    console.error('Error creating post:', error);
+  });
+
+*** Key Notes:
+The fetch method does not reject on HTTP errors (like 404 or 500). It only rejects on network errors. 
+You need to manually check the response.ok property.
+
+For security reasons, fetch does not allow cross-origin cookies unless the credentials option is set to 'include'.
+
+By combining fetch with async/await, you can make the code even cleaner and easier to read.
+
+<!--------------END FETCH METHOD ------------>
