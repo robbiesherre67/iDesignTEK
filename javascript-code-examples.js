@@ -1,8 +1,9 @@
 ****************************
 REACT to start the DEV Server Locally -> npm run dev
+This will open -> http://localhost:3000/
 
 END of local REACT project run -> npm run build and this creates 
-a "dist" that you can deploy your code with.
+a "dist" that you can deploy your code with
 -----------------------------
 npm create vite@latest ADD name of your project -- --template react
 change the port of the localhost SERVER:3000
@@ -29,10 +30,8 @@ CMD SHIFT D  = selects all of the text you want to change at one Time.
 rafce = creating a React ARROW Function for components
 
 *****************************
-  TAILWIND CSS INSTALL ->
-
+TAILWIND CSS INSTALL ->
 https://tailwindcss.com/docs/guides/create-react-app
-
 *****************************
 
 React Basics Concepts
@@ -78,7 +77,7 @@ const Card = () => {
 };
  
 export default Card;
-
+--------------------------------------
 JSX and Babel
 JSX stands for “JavaScript XML” and it is code in which we can write HTML and JavaScript code together. 
 This code looks very similar to the HTML markup.
@@ -100,7 +99,7 @@ So we can easily write JSX code in our file and babel will convert that code in 
 JavaScript code that browsers can understand.
 
 Article - https://reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html
-
+------------------------
 Adding multiple elements
 So for adding multiple elements in react component, we have to wrap them with one parent element. 
 Because we know in babel our code convert in React JSX function and that function only add one 
@@ -122,6 +121,7 @@ const Card = () => {
 };
  
 export default Card;
+------------------------------
 We can use React.Fragment component for wrapping them.
 
 import React from "react";
@@ -150,7 +150,8 @@ const Card = () => {
 };
  
 export default Card;
-Adding JavaScript expression in to JSX
+-----------------------------
+Adding JavaScript expression into JSX
 Now to add JavaScript expression in to JSX, we just need to add curly brackets 
 and inside this we can add JavaScript expression.
 
@@ -168,6 +169,8 @@ const Card = () => {
  
 export default Card;
 
+---------------
+  
 Adding attributes and events in JSX
 In JSX, we can add attribute/events same as we add attributes/events in HTML. But some attributes are different.
 
@@ -214,6 +217,8 @@ const Card = () => {
 };
  
 export default Card;
+
+-------------------------
 We can also use useState hook, for handling inputs. Just we have to pass our set function in onChange event.
 
 import React, { useState } from "react";
@@ -232,11 +237,10 @@ const Card = () => {
 };
  
 export default Card;
-
+------------------------
 
 Mapping list items
-As we see in Section 2, we will use map method to display the list of items in react. 
-This map method is very useful.
+Use map method to display the list of items in react. 
 
 Always remember to add key attribute for returning element and pass unique value in it. 
 That will help react to quickly identified which element gets changed.
@@ -258,6 +262,7 @@ const Card = () => {
  
 export default Card;
 *****************************
+  
 REACT JS useState() EXAMPLE ->
 
 Here’s a simple example of using useState in a React component to handle input changes:
