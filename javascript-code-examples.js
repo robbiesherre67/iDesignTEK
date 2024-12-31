@@ -1313,3 +1313,17 @@ Access in Code
 const API_URL = process.env.REACT_APP_API_URL;
 By following this approach, your code becomes cleaner, more adaptable, and easier to work with across different environments.  
 <!--------- END API CALLS Secure --------->
+
+<!-------------- START HOISTING AND TEMPORAL DEAD ZONE EXPLANATION ------------------>
+The temporal dead zone (TDZ) refers to the period in JavaScript where a variable is in scope but cannot be 
+accessed because it has not yet been initialized. 
+This happens with variables declared using let and const.
+
+For example:
+
+console.log(x); // ReferenceError: Cannot access 'x' before initialization
+let x = 5;
+Here, the variable x exists in the scope starting from the beginning of the block, but you can't use it 
+until after the let declaration is executed. This "unavailable" state before initialization is the TDZ. 
+It helps prevent unintended behavior by ensuring variables are explicitly initialized before use.  
+<!-------------- END HOISTING AND TEMPORAL DEAD ZONE EXPLANATION ------------------>
