@@ -217,6 +217,37 @@ const Card = () => {
 };
  
 export default Card;
+-------------------------
+
+// Import the `useState` hook from the `react` library.
+import React, { useState } from "react";
+
+// Define the `Text` functional component.
+const Text = () => {
+  // Use the `useState` hook to create a state variable `isVisible` initialized to `false`.
+  const [isVisible, setIsVisible] = useState(false);
+
+  // Define a function `toggleVisibility` that toggles the `isVisible` state when the button is clicked.
+  const toggleVisibility = () => {
+    setIsVisible(!isVisible);
+  };
+
+  // Return JSX elements to be rendered on the web page.
+  return (
+    <div className="container">
+      {/* Create a button with an `onClick` event handler that calls `toggleVisibility`. */}
+      <button onClick={toggleVisibility} className="button">
+        Toggle Visibility
+      </button>
+
+      {/* Conditionally render a paragraph with a class `text` based on the `isVisible` state. */}
+      {isVisible && <p className="text">This text is now visible!</p>}
+    </div>
+  );
+};
+
+// Export the `Text` component for use in other parts of the application.
+export default Text;
 
 -------------------------
 We can also use useState hook, for handling inputs. Just we have to pass our set function in onChange event.
