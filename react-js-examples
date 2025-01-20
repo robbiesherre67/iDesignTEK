@@ -19,6 +19,12 @@ export default defineConfig({
   },
 });
 -----------------------------
+
+WEB VITALS ERROR?
+
+npm install web-vitals
+
+-----------------------------
 cd INTO YOUR REACT FOLDER
   npm install
   npm run dev
