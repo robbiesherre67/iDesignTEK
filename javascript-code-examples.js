@@ -2858,3 +2858,43 @@ Iterators and generators significantly enhance how you work with data, giving yo
 define custom iteration behavior while leveraging built-in iteration for both standard and user-defined data structures.
 
 <------------ ITERATORS, GENERATORS, & DATA STRUCTURES ------------- END
+
+
+
+In modern JavaScript there are four distinct loop constructs that use the for keyword:
+
+Classic for
+The familiar C-style loop with initializer, test and final-expression.
+
+for (let i = 0; i < 5; i++) {
+  console.log(i);
+}
+-----------------
+for in
+Iterates over the enumerable property names (keys) of an object.
+
+const obj = { a: 1, b: 2, c: 3 };
+for (let key in obj) {
+  console.log(key, obj[key]);
+}
+-----------------
+for of
+Iterates over the values of any iterable (arrays, strings, Maps, Sets, etc.).
+
+const arr = [10, 20, 30];
+for (let value of arr) {
+  console.log(value);
+}  
+-----------------
+for await…of
+Inside an async function, iterates asynchronously over an async iterable (e.g. streams, async generators).
+
+async function process(stream) {
+  for await (let chunk of stream) {
+    console.log(chunk);
+  }
+}  
+
+
+
+
