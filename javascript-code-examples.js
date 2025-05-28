@@ -2859,7 +2859,7 @@ define custom iteration behavior while leveraging built-in iteration for both st
 
 <------------ ITERATORS, GENERATORS, & DATA STRUCTURES ------------- END
 
-
+<------------ MODERN FOR LOOPS ------------- START
 
 In modern JavaScript there are four distinct loop constructs that use the for keyword:
 
@@ -2886,7 +2886,7 @@ for (let value of arr) {
   console.log(value);
 }  
 -----------------
-for await…of
+for await of
 Inside an async function, iterates asynchronously over an async iterable (e.g. streams, async generators).
 
 async function process(stream) {
@@ -2894,6 +2894,9 @@ async function process(stream) {
     console.log(chunk);
   }
 }  
+
+<------------ MODERN FOR LOOPS ------------- END
+
 
 
 
