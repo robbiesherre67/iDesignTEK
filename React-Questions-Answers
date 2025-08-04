@@ -188,6 +188,10 @@ function useCounter(initial = 0) {
   const reset = useCallback(() => dispatch({ type: 'reset' }), []);
   return { count: state.count, inc, dec, reset };
 }
+
+*** Rules of Hooks (must know):***
+Only call hooks at the top level of a React function.
+Only call hooks from React functions (components or custom hooks).
 -------------------------------
 11.
 -------------------------------
