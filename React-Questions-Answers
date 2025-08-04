@@ -1,4 +1,5 @@
 1. What is the difference between a functional component and a class component in React?
+
 Answer:
 Functional components are plain JavaScript functions that return JSX. 
 Class components are ES6 classes that extend React.Component and require a render() method.
@@ -15,6 +16,7 @@ class Hello extends React.Component {
 }
 -------------------------------
 2. How does the key prop help React in lists?
+
 Answer:
 The key prop gives React a way to identify which items have changed, are added, or removed. 
 It optimizes rendering performance by avoiding unnecessary re-renders.
@@ -25,6 +27,7 @@ Code:
 ))}
 -------------------------------
 3. What is "lifting state up" in React?
+
 Answer:
 Lifting state up means moving shared state to the closest common ancestor of components that need it. 
 This enables those components to stay in sync.
@@ -37,6 +40,7 @@ function Parent() {
 }
 -------------------------------
 4. What happens when you call setState or useState's updater?
+
 Answer:
 React schedules a re-render of the component with the new state. 
 It does not update state immediately; updates are batched and asynchronous.
@@ -46,12 +50,169 @@ setCount(count + 1);
 console.log(count); // Still old value immediately after
 -------------------------------
 5. What is JSX and why do we use it?
+
 Answer:
 JSX is a syntax extension that allows writing HTML-like code in JavaScript. 
 React uses it to describe UI components declaratively.
 
 Code:
 const element = <h1>Hello, JSX!</h1>;
+-------------------------------
+6. How does useState work, and when should you use functional updates?
+
+Answer:
+useState returns [state, setState]. Updates are asynchronous and may be batched. 
+Use functional updates (setState(prev => ...)) when the new value depends on the previous 
+state to avoid stale reads in batched updates.
+
+Code:
+const [count, setCount] = useState(0);
+
+// Bad if multiple calls happen in one tick:
+setCount(count + 1);
+setCount(count + 1); // might end up +1
+
+// Good: functional updates are safe in batches:
+setCount(c => c + 1);
+setCount(c => c + 1); // reliably +2
+-------------------------------
+7. Explain useEffect dependencies, cleanup, and common pitfalls.
+
+Answer:
+useEffect runs after render. The dependency array controls when it re-runs:
+
+- No deps: runs after every render.
+
+- []: runs once after mount (and cleanup on unmount).
+
+- [a, b]: runs when a or b changes.
+
+Cleanup: return a function to dispose resources (timers, subscriptions, in-flight requests).
+
+Common pitfalls:
+
+- Missing deps → stale values/bugs. Use ESLint’s react-hooks/exhaustive-deps.
+
+- Stale closures → reference current values or move logic into the effect.
+
+- Race conditions with async work → cancel/ignore outdated results.
+
+Code (fetch with cancellation):
+useEffect(() => {
+  const ctrl = new AbortController();
+  let active = true;
+
+  (async () => {
+    try {
+      const res = await fetch('/api/data', { signal: ctrl.signal });
+      if (!active) return;
+      const json = await res.json();
+      setData(json);
+    } catch (e) {
+      if (e.name !== 'AbortError') setError(e);
+    }
+  })();
+
+  return () => {
+    active = false;
+    ctrl.abort();
+  };
+}, [query]);
+-------------------------------
+8. What’s the difference between useMemo and useCallback? When should you use them?
+Answer:
+
+- useMemo(fn, deps) memoizes a computed value.
+
+- useCallback(fn, deps) memoizes a function reference (equivalent to useMemo(() => fn, deps)).
+
+Use them to:
+
+- Avoid expensive recalculations.
+
+- Stabilize object/function identities passed to children (to reduce re-renders with React.memo).
+
+Code:
+const expensive = useMemo(() => heavyCompute(input), [input]);
+const onSelect = useCallback(id => setSelected(id), []);
+
+// Child re-renders only if relevant props change
+const Child = React.memo(({ onSelect, item }) => /* ... */);
+-------------------------------
+9. What are practical uses of useRef?
+
+Answer:
+useRef holds a mutable value that persists across renders without causing re-renders when it changes. Use cases:
+
+- Accessing/controlling DOM nodes.
+
+- Storing instance-like mutable data (timers, previous values, flags).
+
+- Avoiding re-creation of expensive non-UI objects.
+
+Code (focus input + previous value):
+const inputRef = useRef(null);
+const prevValueRef = useRef();
+
+useEffect(() => {
+  prevValueRef.current = value;
+}, [value]);
+
+const focus = () => inputRef.current?.focus();
+
+return <input ref={inputRef} value={value} onChange={e => setValue(e.target.value)} />;
+
+***Gotcha: Changing ref.current does not trigger a render.***
+-------------------------------
+10. When should you use useReducer and how do you factor logic into a custom hook?
+
+Answer:
+Use useReducer for complex state with multiple transitions or when you want a single place to manage state logic (predictability, testability).
+
+Wrap related logic in a custom hook to encapsulate state, effects, and actions and reuse across components.
+
+Code (reducer + custom hook):
+function counterReducer(state, action) {
+  switch (action.type) {
+    case 'inc': return { ...state, count: state.count + 1 };
+    case 'dec': return { ...state, count: state.count - 1 };
+    case 'reset': return { count: 0 };
+    default: return state;
+  }
+}
+
+function useCounter(initial = 0) {
+  const [state, dispatch] = useReducer(counterReducer, { count: initial });
+  const inc = useCallback(() => dispatch({ type: 'inc' }), []);
+  const dec = useCallback(() => dispatch({ type: 'dec' }), []);
+  const reset = useCallback(() => dispatch({ type: 'reset' }), []);
+  return { count: state.count, inc, dec, reset };
+}
+-------------------------------
+11.
+-------------------------------
+12.
+-------------------------------
+13.
+-------------------------------
+14.
+-------------------------------
+15.
+-------------------------------
+
+-------------------------------
+
+-------------------------------
+
+-------------------------------
+
+-------------------------------
+
+-------------------------------
+
+-------------------------------
+
+-------------------------------
 
 -------------------------------
 
