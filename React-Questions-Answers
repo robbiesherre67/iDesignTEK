@@ -221,11 +221,11 @@ strict unidirectional data flow, and dev tools for debugging.
 
 Key differences:
 
-Redux	                                   Context API
-Great for complex, global state	         Best for light/medium state sharing
-Has middleware (redux-thunk, saga)	     No built-in middleware
-Dev tools, time-travel debugging	       No built-in dev tooling
-Boilerplate heavy (but improving)	       Simpler to set up
+Redux------------------------------------Context API
+Great for complex, global state----------Best for light/medium state sharing
+Has middleware (redux-thunk, saga)-------No built-in middleware
+Dev tools, time-travel debugging---------No built-in dev tooling
+Boilerplate heavy (but improving)--------Simpler to set up
 
 Use Redux for:
 
