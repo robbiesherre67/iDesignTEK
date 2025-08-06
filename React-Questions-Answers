@@ -232,11 +232,74 @@ Use Redux for:
 - Cross-feature communication
 - Asynchronous logic and debugging
 -------------------------------
-13.
+13. What are some common strategies for organizing large-scale React apps?
+
+Answer:
+Organize by feature/domain, not type.
+
+Feature-based structure:
+src/
+├── features/
+│   ├── auth/
+│   │   ├── AuthPage.jsx
+│   │   ├── authSlice.js
+│   │   └── authAPI.js
+│   └── dashboard/
+│       ├── DashboardPage.jsx
+│       └── widgets/
+├── components/
+├── hooks/
+├── utils/
+├── store/
+└── App.jsx
+Other strategies:
+
+- Co-locate styles, tests, and logic near components.
+- Use barrel files (index.ts) for clean imports.
+- Modularize routes and lazy load per feature.
 -------------------------------
-14.
+14. How do you handle cross-cutting concerns like loading, errors, and authentication globally?
+
+Answer:
+
+Loading/Error: Centralize logic in stores (Redux), or wrap with HOCs/hooks/context.
+
+- Authentication:
+
+-- Store token in memory (or localStorage if needed).
+
+-- Protect routes using a <PrivateRoute> or conditional render in routes.
+
+- Layout composition: Use shared layout components (Header/Footer) with children.
+
+Example - Protected Route:
+function PrivateRoute({ children }) {
+  const { user } = useAuth();
+  return user ? children : <Navigate to="/login" />;
+}
+
 -------------------------------
-15.
+15. What is code splitting and lazy loading in React? Why is it important?
+
+Answer:
+Code splitting breaks up your bundle so users only load what they need. React supports this via React.lazy() and Suspense.
+
+Benefits:
+- Faster initial load time
+- Reduced memory usage
+- Better perceived performance
+
+Code:
+const LazyPage = React.lazy(() => import('./HeavyPage'));
+
+function App() {
+  return (
+    <Suspense fallback={<Spinner />}>
+      <LazyPage />
+    </Suspense>
+  );
+}
+Tip: Combine with route-based code splitting using React Router and lazy().
 -------------------------------
 16.
 -------------------------------
