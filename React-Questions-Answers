@@ -301,15 +301,104 @@ function App() {
 }
 Tip: Combine with route-based code splitting using React Router and lazy().
 -------------------------------
-16.
+16. What are Higher-Order Components (HOCs), and how do they differ from render props?
+
+Answer:
+An HOC is a function that takes a component and returns a new component with added behavior or data.
+
+const withLogging = WrappedComponent => {
+  return props => {
+    console.log('Rendering:', WrappedComponent.name);
+    return <WrappedComponent {...props} />;
+  };
+};
+Render props pattern passes a function as a prop that returns UI.
+<DataProvider render={data => <Chart data={data} />} />
+
+Key differences:
+HOCs wrap components.
+Render props use composition via a function.
 -------------------------------
-17.
+17. What is an Error Boundary in React, and when should you use one?
+
+Answer:
+Error boundaries catch runtime errors in the component tree during rendering, 
+in lifecycle methods, and in constructors of child components.
+
+They:
+
+- Prevent the entire app from crashing
+
+- Show fallback UIs
+
+Code (class only):
+class ErrorBoundary extends React.Component {
+  state = { hasError: false };
+  static getDerivedStateFromError() {
+    return { hasError: true };
+  }
+  componentDidCatch(error, info) {
+    logError(error, info);
+  }
+  render() {
+    return this.state.hasError ? <Fallback /> : this.props.children;
+  }
+}
+React 18 doesn’t yet support error boundaries with hooks.
 -------------------------------
-18.
+18. What is React’s concurrent mode and why does it matter?
+
+Answer:
+Concurrent Mode (now evolving into Concurrent Features) allows React to interrupt rendering and prioritize tasks for a smoother UI.
+
+It enables:
+- startTransition() for low-priority updates
+- useDeferredValue() to defer rendering
+- Better responsiveness under load
+
+Code:
+import { startTransition } from 'react';
+
+const handleSearch = e => {
+  const input = e.target.value;
+  setInput(input);
+  startTransition(() => {
+    setQuery(input); // Low-priority update
+  });
+};
 -------------------------------
-19.
+19. What is React Server Components (RSC)?
+
+Answer:
+React Server Components let you render components on the server and stream them to the client. They:
+
+- Never send their JS to the browser
+- Can safely access backend resources (DBs, APIs)
+- Improve performance by reducing JS bundle size
+
+Used in frameworks like Next.js App Router (.server.js vs .client.js).
+
+Important distinctions:
+
+- RSCs are not interactive
+- You compose them with client components
 -------------------------------
-20.
+20. How do you optimize performance in large React applications?
+
+Answer:
+
+Memoization:
+- React.memo for component props
+- useMemo and useCallback to avoid recalculations/re-creations
+
+Code Splitting: React.lazy, Suspense
+Avoid unnecessary re-renders:
+- Use key props properly
+- Avoid re-creating functions/objects unless needed
+
+Virtualization: react-window, react-virtualized for long lists
+Throttle/Debounce: Use lodash.debounce for input handling
+Profiling: Use React DevTools Profiler to find bottlenecks
 -------------------------------
 21.
 -------------------------------
