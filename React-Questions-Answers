@@ -386,7 +386,6 @@ Important distinctions:
 20. How do you optimize performance in large React applications?
 
 Answer:
-
 Memoization:
 - React.memo for component props
 - useMemo and useCallback to avoid recalculations/re-creations
@@ -400,15 +399,103 @@ Virtualization: react-window, react-virtualized for long lists
 Throttle/Debounce: Use lodash.debounce for input handling
 Profiling: Use React DevTools Profiler to find bottlenecks
 -------------------------------
-21.
+21. How does React Router work, and what’s the difference between <BrowserRouter> and <HashRouter>?
+
+Answer:
+React Router uses the HTML5 history API (or hash in URLs) to keep the UI in sync with the URL.
+
+- <BrowserRouter>: Uses clean URLs (/about). Requires server configuration to serve index.html for all routes.
+
+- <HashRouter>: Uses hash fragments (/#/about). No server config needed, but URLs look less clean.
+
+Code:
+<BrowserRouter>
+  <Routes>
+    <Route path="/" element={<Home />} />
+    <Route path="/about" element={<About />} />
+  </Routes>
+</BrowserRouter>
 -------------------------------
-22.
+22. How do you integrate API calls into a React application?
+
+Answer:
+- Use fetch or Axios inside useEffect for GET calls.
+
+- Manage loading and error states.
+
+- Cancel or ignore outdated requests to prevent race conditions.
+
+useEffect(() => {
+  let ignore = false;
+  async function fetchData() {
+    try {
+      const res = await fetch('/api/data');
+      const json = await res.json();
+      if (!ignore) setData(json);
+    } catch (e) {
+      setError(e);
+    }
+  }
+  fetchData();
+  return () => { ignore = true; };
+}, [url]);
 -------------------------------
-23.
+23. How do you test React components with React Testing Library?
+
+Answer:
+RTL focuses on testing components from a user’s perspective.
+
+Key steps:
+
+1. Render the component with render().
+2. Query elements using getByText, getByRole, etc.
+3. Fire events with fireEvent or userEvent.
+4. Assert expected outcomes.
+
+Code:
+import { render, screen, fireEvent } from '@testing-library/react';
+import Counter from './Counter';
+
+test('increments counter', () => {
+  render(<Counter />);
+  fireEvent.click(screen.getByText(/increment/i));
+  expect(screen.getByText(/count: 1/i)).toBeInTheDocument();
+});
 -------------------------------
-24.
+24. What is Jest, and how does it work with React Testing Library?
+
+Answer:
+
+- Jest is a JavaScript testing framework for running tests, mocking functions/modules, and generating coverage.
+- React Testing Library builds on Jest to test React components by simulating user interactions and asserting DOM output.
+
+Jest handles:
+
+- Test running
+- Assertions
+- Mocks/stubs
+- Snapshots
 -------------------------------
-25.
+25. How do you deploy a React app to production?
+
+Answer:
+1. Build the app:
+npm run build
+
+2. Choose hosting:
+
+- Static hosts: Netlify, Vercel, GitHub Pages
+
+- Traditional server: Apache/Nginx (serve build folder)
+
+3. Upload build output to host.
+
+4. Configure server for SPA:
+
+- Redirect all routes to index.html (except static files).
+
+Example: Netlify _redirects file
+/* /index.html 200
 -------------------------------
 26.
 -------------------------------
