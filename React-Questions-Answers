@@ -120,8 +120,8 @@ useEffect(() => {
 }, [query]);
 -------------------------------
 8. What’s the difference between useMemo and useCallback? When should you use them?
-Answer:
 
+Answer:
 - useMemo(fn, deps) memoizes a computed value.
 
 - useCallback(fn, deps) memoizes a function reference (equivalent to useMemo(() => fn, deps)).
@@ -261,7 +261,6 @@ Other strategies:
 14. How do you handle cross-cutting concerns like loading, errors, and authentication globally?
 
 Answer:
-
 Loading/Error: Centralize logic in stores (Redux), or wrap with HOCs/hooks/context.
 
 - Authentication:
@@ -465,7 +464,6 @@ test('increments counter', () => {
 24. What is Jest, and how does it work with React Testing Library?
 
 Answer:
-
 - Jest is a JavaScript testing framework for running tests, mocking functions/modules, and generating coverage.
 - React Testing Library builds on Jest to test React components by simulating user interactions and asserting DOM output.
 
