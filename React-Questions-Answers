@@ -551,15 +551,45 @@ Answer:
 - Suspense support on server → send placeholders first, hydrate later.
 - Smaller JavaScript payloads when using Server Components.
 -------------------------------
-31.
+31. State Management Beyond Redux
+When should you pick a server-state library (React Query/SWR) vs a client-state store (Zustand/Jotai/Context)?
+
+Answer:
+Server state (remote, cacheable, shared, stale over time) → React Query/SWR (fetching, caching, revalidation, retries, pagination).
+
+Client state (local UI state, ephemeral selections, toggles) → Zustand/Jotai/Context.
+Rule of thumb: Don’t put server state in Redux/Context; keep it in a data-fetching cache layer.
 -------------------------------
-32.
+32. What are the pros/cons of Zustand vs Redux?
+
+Answer:
+Zustand: minimal API, plain JS, no providers/selectors ceremony; great ergonomics and performance via slice selectors.
+
+Redux: mature ecosystem, strong devtools/middleware, predictable patterns; more boilerplate.
+Use: Zustand for small/medium apps & feature stores; Redux for very large teams or when you need its middleware/devtools conventions.
 -------------------------------
-33.
+33. How do selectors prevent unnecessary re-renders?
+
+Answer:
+Selectors subscribe to a slice of state; components re-render only when that slice changes (by reference/equality).
+
+// Zustand example
+const count = useStore(s => s.counter.count);
+
+Use shallow compare/memoized selectors to reduce churn.
 -------------------------------
-34.
+34. What is XState and when is a state machine/statechart useful?
+
+Answer:
+XState models finite states and transitions (idle → loading → success/error). 
+Useful for complex, multi-step, async flows (wizards, payments) and to avoid “boolean soup.”
 -------------------------------
-35.
+35. How do you structure a hybrid approach (React Query + Zustand/Redux) cleanly?
+
+Answer:
+- Server data: React Query (queries/mutations, caching).
+- UI/client data: Zustand/Redux (filters, panel open, selected IDs).
+- Boundary: Never duplicate data between layers; store only IDs/UI flags in client store and derive the rest from the query cache.
 -------------------------------
 36.
 -------------------------------
