@@ -520,11 +520,36 @@ fetchData().then(() => {
 After React 18:
 Same code → only 1 render.
 -------------------------------
-28.
+28. How does useId work, and why is it useful?
+
+Answer:
+useId generates a unique, stable ID for components, safe for SSR/hydration.
+
+const id = useId();
+<label htmlFor={id}>Name</label>
+<input id={id} />
+
+Prevents mismatches between server and client-generated IDs.
 -------------------------------
-29.
+29. What’s the difference between startTransition and useDeferredValue?
+
+Answer:
+startTransition: Marks a state update as low-priority.
+
+useDeferredValue: Defers using a value until after urgent updates.
+
+startTransition(() => {
+  setFilter(input);
+});
+
+const deferredFilter = useDeferredValue(input);
 -------------------------------
-30.
+30. How does React 18 improve SSR performance?
+
+Answer:
+- Streaming HTML as it’s generated → faster first paint.
+- Suspense support on server → send placeholders first, hydrate later.
+- Smaller JavaScript payloads when using Server Components.
 -------------------------------
 31.
 -------------------------------
