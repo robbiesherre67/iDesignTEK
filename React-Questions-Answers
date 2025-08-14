@@ -495,9 +495,30 @@ npm run build
 Example: Netlify _redirects file
 /* /index.html 200
 -------------------------------
-26.
+26. React 18 Features & Updates
+
+What are React 18’s main new features?
+
+Answer:
+- Concurrent Rendering (via startTransition, useDeferredValue)
+- Automatic Batching of state updates across promises/events
+- Suspense for Data Fetching with concurrent APIs
+- Streaming Server-Side Rendering (SSR)
+- useId hook for unique, SSR-safe IDs
+- Improved StrictMode behaviors
 -------------------------------
-27.
+27. What is automatic batching and how does it improve performance?
+
+Answer:
+In React 18, state updates in the same event loop are batched automatically, even inside promises or async calls.
+
+Before React 18:
+fetchData().then(() => {
+  setCount(c => c + 1);
+  setFlag(true); // caused 2 renders
+});
+After React 18:
+Same code → only 1 render.
 -------------------------------
 28.
 -------------------------------
