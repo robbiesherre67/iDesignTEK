@@ -591,25 +591,85 @@ Answer:
 - UI/client data: Zustand/Redux (filters, panel open, selected IDs).
 - Boundary: Never duplicate data between layers; store only IDs/UI flags in client store and derive the rest from the query cache.
 -------------------------------
-36.
+36. Performance Profiling & Optimization
+1) How do you use the React DevTools Profiler effectively?
+
+Answer:
+Record interactions, inspect commit times, find “hot components,” and check “Why did this render?” 
+(in supported setups). Optimize the slowest paths first; verify improvements by re-profiling.
 -------------------------------
-37.
+37. When do React.memo, useMemo, and useCallback actually help?
+
+Answer:
+They help when:
+
+- Child components are pure and expensive to render.
+- Props/functions change identity frequently causing needless renders.
+Caveat: They add overhead. Measure first.
 -------------------------------
-38.
+38. How do you prevent prop churn?
+
+Answer:
+Hoist stable values; memoize objects/functions:
+
+const value = useMemo(() => ({ theme, dense }), [theme, dense]);
+const onSelect = useCallback(id => setId(id), []);
+
+Avoid creating new literals in JSX; stabilize context values.
 -------------------------------
-39.
+39. What are effective strategies for heavy lists and tables?
+
+Answer:
+- Windowing/virtualization (react-window, react-virtualized).
+- Server-driven pagination/infinite scroll.
+- Avoid wide cells with expensive renders; memoize row/cell components.
 -------------------------------
-40.
+40. What non-React optimizations matter most?
+
+Answer:
+- Bundle size: code-splitting, tree-shaking, dynamic imports.
+- Assets: compress images/fonts, defer non-critical scripts.
+- Web Vitals: monitor LCP/CLS/INP; use CDN/caching; prefetch critical routes.
 -------------------------------
-41.
+41. Testing Strategy & Best Practices (5 Q&As)
+1) What’s your testing pyramid for React?
+
+Answer:
+- Unit (fast, logic & small components)
+- Integration (component interactions, data fetching with MSW)
+- E2E (user flows with Playwright/Cypress)
+  Focus most on integration; keep a few critical E2E paths.
 -------------------------------
-42.
+42. How do you test components with async data?
+
+Answer:
+- Mock network with MSW.
+- Use RTL async queries:
+
+render(<UserList />);
+expect(await screen.findByText(/Alice/)).toBeInTheDocument();
+
+Test loading/error states; avoid brittle timer hacks.
 -------------------------------
-43.
+43. When are snapshot tests appropriate?
+
+Answer:
+For stable, presentational components or serialized outputs. Avoid for dynamic/complex 
+UIs where snapshots become noisy; prefer explicit assertions.
 -------------------------------
-44.
+44. How do you test accessibility?
+
+Answer:
+Prefer getByRole, getByLabelText.
+Add jest-axe or @axe-core/playwright in CI to catch a11y regressions.
 -------------------------------
-45.
+45. How do you structure tests in large apps?
+
+Answer:
+- Co-locate tests with source (Component.test.tsx).
+- Use testing utilities (custom render with providers).
+- Mock boundaries (network, time, feature flags).
+- Run tests in CI with coverage thresholds and parallelization.
 -------------------------------
 46.
 -------------------------------
