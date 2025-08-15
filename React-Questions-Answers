@@ -671,13 +671,82 @@ Answer:
 - Mock boundaries (network, time, feature flags).
 - Run tests in CI with coverage thresholds and parallelization.
 -------------------------------
-46.
+46. Controlled vs Uncontrolled Components — when to use which?
+
+Answer:
+- Controlled: Form value lives in React state; great for validation, conditional UI, and instant feedback.
+- Uncontrolled: DOM keeps the value via refs; simpler, less re-renders for large forms.
+
+// Controlled
+const [name, setName] = useState('');
+<input value={name} onChange={e => setName(e.target.value)} />
+
+// Uncontrolled
+const ref = useRef(null);
+<form onSubmit={e => { e.preventDefault(); console.log(ref.current.value); }}>
+  <input ref={ref} defaultValue="Jane" />
+</form>
+
+Rule: Start controlled for UX/validation; go uncontrolled for perf in heavyweight forms.
 -------------------------------
-47.
+47. SSR vs SSG vs ISR vs CSR — how do you choose?
+
+Answer:
+- CSR (Client-Side Rendering): Small apps, dashboards, auth-only UIs; fastest deploy, SEO weaker.
+- SSR (Server-Side Rendering): Dynamic per-request data + SEO (e.g., user-specific pages).
+- SSG (Static Site Generation): Purely static content; fastest TTFB/CDN.
+- ISR (Incremental Static Regeneration): Static + scheduled revalidation for near-real-time content.
+- Decision rule: SEO + freshness → SSR/ISR; static marketing/docs → SSG; app-like/private → CSR.
 -------------------------------
-48.
+48. Hydration mismatches — common causes and fixes?
+
+Answer:
+Causes:
+- Rendering non-deterministic values server vs client (dates, random, window access).
+- Locale/timezone differences, conditional markup divergence, data not ready on server.
+
+Fixes:
+- Gate client-only logic: useEffect, useClient (framework-specific), or check typeof window.
+- Use stable IDs (useId) and deterministic rendering.
+- Defer changing content until after mount.
+
+// Safe: client-only effect
+const [now, setNow] = useState(null);
+useEffect(() => setNow(new Date().toLocaleTimeString()), []);
 -------------------------------
-49.
+49. Preventing XSS in React — do’s and don’ts?
+
+Answer:
+- React escapes values by default: {userInput} is safe.
+- Never inject raw HTML without sanitizing. If you must:
+<div dangerouslySetInnerHTML={{ __html: sanitizedHTML }} />
+
+
+- Sanitize on the server (preferred) or with a robust sanitizer.
+- Avoid constructing URLs/inline event handlers from untrusted data.
+- Use Content Security Policy (CSP) and avoid eval-like patterns.
 -------------------------------
-50.
+50. TypeScript patterns for React components
+
+Answer:
+- Prefer plain functions over React.FC when you don’t need implicit children.
+- Use discriminated unions for variant props; make illegal states unrepresentable.
+- Strongly type events and handlers.
+
+type ButtonProps =
+  | { kind: 'primary'; onClick: () => void; children: React.ReactNode }
+  | { kind: 'link'; href: string; children: React.ReactNode };
+
+function Button(props: ButtonProps) {
+  if (props.kind === 'primary') return <button onClick={props.onClick}>{props.children}</button>;
+  return <a href={props.href}>{props.children}</a>;
+}
+
+// Typed event handler
+function Input() {
+  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => { /* ... */ };
+  return <input onChange={onChange} />;
+}
+
+Bonus: Use forwardRef + ComponentPropsWithoutRef<'button'> to inherit native props cleanly.
 -------------------------------
