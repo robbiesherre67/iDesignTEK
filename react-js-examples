@@ -1,11 +1,14 @@
 ****************************
+
 REACT to start the DEV Server Locally -> npm run dev
 This will open -> http://localhost:3000/
 
 END of local REACT project run -> npm run build and this creates 
 a "dist" that you can deploy your code with
 REMOVE the DIST folder -> rm -rf dist 
+
 ****************************
+
 npm create vite@latest ADD name of your project -- --template react
 change the port of the localhost SERVER:3000
 
@@ -19,22 +22,33 @@ export default defineConfig({
     port: 3000,
   },
 });
+
 ****************************
+
 LATEST TAILWIND install cmd
 npm install -D tailwindcss@3.4.3 postcss@8.4.38 autoprefixer@10.4.19
 npx tailwindcss init -p
+
 ****************************
+
 WEB VITALS ERROR?
 npm install web-vitals
+
 ****************************
+
 cd INTO YOUR REACT FOLDER
   npm install
   npm run dev
 ROUTING install = npm i react-router-dom
+
 *****************************
+
 CMD SHIFT D  = selects all of the text you want to change at one Time.
 rafce = creating a React ARROW Function for components
+
 *****************************
+
 TAILWIND CSS INSTALL ->
 https://tailwindcss.com/docs/guides/create-react-app
+
 *****************************
