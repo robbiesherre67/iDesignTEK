@@ -4,6 +4,7 @@ This will open -> http://localhost:3000/
 
 END of local REACT project run -> npm run build and this creates 
 a "dist" that you can deploy your code with
+REMOVE the DIST folder -> rm -rf dist 
 ****************************
 npm create vite@latest ADD name of your project -- --template react
 change the port of the localhost SERVER:3000
