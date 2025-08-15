@@ -5,8 +5,11 @@ This will open -> http://localhost:3000/
 
 END of local REACT project run -> npm run build and this creates 
 a "dist" that you can deploy your code with
-REMOVE the DIST folder -> rm -rf dist 
 
+REMOVE the DIST folder -> rm -rf dist 
+Run a CLEAN BUILD and REMOVE DIST -> 
+*** Clean build
+rm -rf dist && npm run build
 ****************************
 
 npm create vite@latest ADD name of your project -- --template react
