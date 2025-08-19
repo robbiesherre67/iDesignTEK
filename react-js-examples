@@ -32,6 +32,14 @@ LATEST TAILWIND install cmd
 npm install -D tailwindcss@3.4.3 postcss@8.4.38 autoprefixer@10.4.19
 npx tailwindcss init -p
 
+# 1) Make sure dev deps are installed
+npm i -D tailwindcss postcss autoprefixer
+
+# 2) Force npx to use the tailwind package
+npx --package=tailwindcss tailwindcss init -p
+
+npm exec --package=tailwindcss tailwindcss init -p
+
 ****************************
 
 WEB VITALS ERROR?
